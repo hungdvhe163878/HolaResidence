@@ -31,7 +31,7 @@ public class DBContext {
         
     }
      public DBContext(){
-        this("jdbc:sqlserver://localhost:1433;databaseName=HolaResidence",
+        this("jdbc:sqlserver://localhost:1433;databaseName=HolaResidence [sa on db_accessadmin]",
                 "sa","123456");
     }
     public static void main(String[] args) {

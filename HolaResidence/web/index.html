@@ -42,7 +42,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
             .search input:focus{
                 box-shadow: none;
-                border: 2px solid blue;
+                border: 2px #000000 ;
             }
 
             .search .fa-search{
@@ -57,14 +57,36 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                 right: 0px;
                 height: 50px;
                 width: 110px;
-                background: blue;
+
+
+
+                padding: 5px 8px;
+                border: solid 1px rgba(228, 228, 228, 0.76);
+                text-transform: capitalize;
+                color: #1d2a4d;
+                display: inline-block;
+                border-radius: 10px;
+
+                background-image: linear-gradient(to right, rgba(255, 255, 255, 0.8), rgba(199, 198, 198, 0.8));
+                font-family: Arial;
+                box-shadow: 5px 5px 10px rgba(148, 147, 147, 0.911);
             }
 
             .properties-picker {
-                margin-top: 5px;
+                margin-top: 7px;
                 margin-right: 10px;
                 padding: 5px 8px;
+                border: solid 1px rgba(228, 228, 228, 0.76);
+                text-transform: capitalize;
+                color: #1d2a4d;
+                display: inline-block;
+                border-radius: 50px;
+
+                background-image: linear-gradient(to right, rgba(255, 255, 255, 0.5), rgba(199, 198, 198, 0.521));
+                font-family: Arial;
+                box-shadow: 5px 5px 10px rgba(148, 147, 147, 0.911);
             }
+
 
             .container-content {
                 width: 60%;
@@ -91,6 +113,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
             .description {
                 height: 150px;
                 overflow-y: hidden;
+                background-color: #f3f3f3;
+                border-radius: 10px;
+                box-shadow: 10px 10px 5px 0px #eceaea;
+                color: #1d2a4d;
+                font-weight: 600;
+                grid-area: auto;
+                line-height: 24px;
+                padding: 10px 20px;
+                width:50%;
             }
 
             .user-image {
@@ -119,6 +150,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                     text-overflow: clip;
                 }
             }
+            #content {
+                width: 95%;
+                border-radius: 10px;
+                box-shadow: 5px 5px 10px rgb(141, 143, 143);
+                border: solid 1px rgba(228, 228, 228, 0.76);
+                margin: 0 auto; /* Căn giữa theo chiều ngang */
+            }
+
 
             .filter-table {
                 position: absolute;
@@ -144,11 +183,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                 color: #d6d4d4;
                 text-align: center;
             }
+
+
+
         </style>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Hola Residence</a>
+            <a  style="color:#13c5dd; font-family: 'Roboto Condensed', sans-serif; font-size: 40px; font-weight: 700; line-height: 48px; text-transform: uppercase; ">
+                <h1 class="m-0  font-weight-bold">Hola Residence</h1>
+            </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>x
             </button>
@@ -171,8 +215,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                 </ul>
 
                 <div class="nav-item">
-                    <a href="#" class="btn btn-light btn-md " role="button" aria-pressed="true">Đăng nhập</a>
-                    <a href="#" class="btn btn-light btn-md " role="button" aria-pressed="true">Đăng ký</a>
+                    <a href="login.jsp" class="btn btn-light btn-md " style="color:#13c5dd " role="button" aria-pressed="true"><img src="">Đăng nhập</img></a>
+                    <a href="#" class="btn btn-light btn-md " style="color:#13c5dd " role="button" aria-pressed="true">Đăng ký</a>
                 </div>
             </div>
         </nav>
@@ -180,13 +224,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
         <div class="container">
             <form action="">
                 <div class="row height d-flex justify-content-center align-items-center" style="margin-bottom: 10px; ">
-                    <div class="col-md-8">
+                    <div class="col-md-9">
                         <div class="search">
                             <i class="fa fa-search"></i>
-                            <input type="text" class="form-control" placeholder="...">
-                            <button class="btn btn-primary">Search</button>
+                            <input type="text" class="form-control" placeholder="Search" style="background-color: #13c5dd; border-radius: 25px; box-shadow: 6px 6px 6px 0px #949393; color: #ffffff; font-family: 'Roboto', sans-serif; line-height: 20px; padding: 1px 2px;">
+
                         </div>
-                        <select name="house" id="house" class="properties-picker" style="margin-left: 22px;">
+                        <select name="house" id="house" class="properties-picker">
                             <option value="">Loại nhà</option>
                             <option value="1">Nhà trọ, phòng trọ</option>
                             <option value="2">Nhà chung cư</option>
@@ -206,10 +250,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                             <option value="1">1</option>
                             <option value="2">2</option>
                         </select>
-                        <button type="button" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #ffffff; padding: 3px; border: 1px solid black;">
+                        <button type="button" class="properties-picker" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Chọn mức giá
                         </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                        <div class="dropdown-menu " aria-labelledby="dropdownMenuButton">
                             <div style="padding: 10px;">
                                 <input type="number" placeholder="Giá thấp nhất" name="search" style="margin-bottom: 5px;" min="0"><br>
                                 <input type="number" placeholder="Giá cao nhất" name="search">
@@ -218,8 +263,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                     </div>
                 </div>
             </form>
-            <div style="width: 1200px;">
-                <a class="container-content" id="content" href="#" style="text-decoration: none; color: black;">
+            <div>
+
+               <a class="container-content" id="content" href="#" style="text-decoration: none; color: black;">
                     <div class="image">
                         <img src="https://nld.mediacdn.vn/2021/2/25/6-chot-1-1614262018082368411354.jpg" alt="Property Image" width="350px;" height="auto;">
                     </div>
@@ -228,8 +274,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                             <div style="padding-right: 165px;"><b>Tên Trọ</b></div>
                         </div>
                         <div style="display: flex;">
-                            <div style="padding-right: 25px; color: #cc0000;"><b>Diện tích</b></div>
-                            <div style="padding-right: 25px; color: #cc0000;"><b>Giá/Tháng</b></div>
+                            <div style="padding-right: 25px; color: #13c5dd;"><b>Diện tích</b></div>
+                            <div style="padding-right: 25px; color: #13c5dd;"><b>Giá/Tháng</b></div>
                             <div style="padding-right: 25px;">1 <i class="fa-solid fa-bed"></i></div>
                             <div style="padding-right: 25px;">1 <i class="fa-solid fa-toilet"></i></div>
                         </div>
@@ -239,13 +285,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                         </div>
                         <div class="user-image">
                             <div> 
-                                <img src="https://nld.mediacdn.vn/2021/2/25/6-chot-1-1614262018082368411354.jpg" width="50px;" height="50px;"> 
-                                <span>User Name</span> 
-                                <span class="phone"><i class="fa-solid fa-phone-volume"></i> <b>0123456789</b></span>
+                                <img src="https://nld.mediacdn.vn/2021/2/25/6-chot-1-1614262018082368411354.jpg" width="50px" height="50px"> 
+                                <span ">User Name</span> 
+                                <span class="phone" style="background-color: #13c5dd;">
+                                    <i class="fa-solid fa-phone-volume"></i> 
+                                    <b>0123456789</b>
+                                </span>
                             </div>
+
                         </div>
                     </div>
-                </a>
+                </a>      
                 <p style="border-bottom: 1px solid #edecec; margin-top: 16px; width: 720px"></p>
                 <a class="container-content" id="content" href="#" style="text-decoration: none; color: black;">
                     <div class="image">
@@ -256,8 +306,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                             <div style="padding-right: 165px;"><b>Tên Trọ</b></div>
                         </div>
                         <div style="display: flex;">
-                            <div style="padding-right: 25px; color: #cc0000;"><b>Diện tích</b></div>
-                            <div style="padding-right: 25px; color: #cc0000;"><b>Giá/Tháng</b></div>
+                            <div style="padding-right: 25px; color: #13c5dd;"><b>Diện tích</b></div>
+                            <div style="padding-right: 25px; color: #13c5dd;"><b>Giá/Tháng</b></div>
                             <div style="padding-right: 25px;">1 <i class="fa-solid fa-bed"></i></div>
                             <div style="padding-right: 25px;">1 <i class="fa-solid fa-toilet"></i></div>
                         </div>
@@ -267,10 +317,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                         </div>
                         <div class="user-image">
                             <div> 
-                                <img src="https://nld.mediacdn.vn/2021/2/25/6-chot-1-1614262018082368411354.jpg" width="50px;" height="50px;"> 
-                                <span>User Name</span> 
-                                <span class="phone"><i class="fa-solid fa-phone-volume"></i> <b>0123456789</b></span>
+                                <img src="https://nld.mediacdn.vn/2021/2/25/6-chot-1-1614262018082368411354.jpg" width="50px" height="50px"> 
+                                <span ">User Name</span> 
+                                <span class="phone" style="background-color: #13c5dd;">
+                                    <i class="fa-solid fa-phone-volume"></i> 
+                                    <b>0123456789</b>
+                                </span>
                             </div>
+
                         </div>
                     </div>
                 </a>        

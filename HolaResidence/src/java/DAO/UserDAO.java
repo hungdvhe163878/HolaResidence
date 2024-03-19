@@ -49,5 +49,36 @@ public class UserDAO extends DBContext {
         }
         return user;
     }
+   public User getUserByEmailAndPassword(String user_email, String user_password) {
+        User user = null;
+        try {
+            String query = "SELECT * FROM users WHERE email = ? AND password = ?";
+            PreparedStatement statement = connection.prepareStatement(query);
+            statement.setString(1, user_email);
+            statement.setString(2, user_password);
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+                user = new User();
+                user.setId(rs.getInt("id"));
+                user.setUsername(rs.getString("username"));
+                user.setFullname(rs.getString("fullname"));
+                user.setBirthday(rs.getDate("birthday"));
+                user.setGender(rs.getString("gender"));
+                user.setPhone(rs.getString("phone"));
+                user.setEmail(rs.getString("email"));
+                // Handling images as an array of strings
+                String imagesString = rs.getString("images");
+                if (imagesString != null && !imagesString.isEmpty()) {
+                    String[] images = imagesString.split(",");
+                    user.setImages(images);
+                }
+                user.setRoleId(rs.getInt("role_id"));
+                user.setStatus(rs.getString("status"));
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(DBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return user;
+    }
 
 }

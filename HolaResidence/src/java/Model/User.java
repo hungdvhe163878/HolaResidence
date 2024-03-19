@@ -5,7 +5,7 @@
 package Model;
 
 import java.util.Date;
-
+import com.google.gson.annotations.SerializedName;
 /**
  *
  * @author FPT SHOP
@@ -19,6 +19,7 @@ public class User {
     private String gender;
     private String phone;
     private String email;
+    @SerializedName("picture")
     private String[] images;
     private int roleId;
     private String status;

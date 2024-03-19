@@ -356,7 +356,7 @@
                 </ul>
 
                 <div class="nav-item">
-                    <a href="#" class="btn btn-light btn-md " role="button" aria-pressed="true">Đăng nhập</a>
+                    <a href="login.jsp" class="btn btn-light btn-md " role="button" aria-pressed="true">Đăng nhập</a>
                     <a href="#" class="btn btn-light btn-md " role="button" aria-pressed="true">Đăng ký</a>
                 </div>
             </div>
