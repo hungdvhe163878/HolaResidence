@@ -189,5 +189,10 @@ public class RentHouse {
     public void setExpiryDate(Date expiryDate) {
         this.expiryDate = expiryDate;
     }
+
+    @Override
+    public String toString() {
+        return "RentHouse{" + "id=" + id + ", name=" + name + ", price=" + price + ", acreage=" + acreage + ", bedroom=" + bedroom + ", bathroom=" + bathroom + ", description=" + description + ", image=" + image + ", ratePoint=" + ratePoint + ", provinceId=" + provinceId + ", districtId=" + districtId + ", communeId=" + communeId + ", categoryId=" + categoryId + ", userId=" + userId + ", status=" + status + ", createdDate=" + createdDate + ", expiryDate=" + expiryDate + '}';
+    }
     
 }

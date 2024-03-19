@@ -21,7 +21,7 @@
             }
 
             .navbar {
-                box-shadow: rgba(0, 0, 0, 0.20) 0px 25px 20px -20px;
+                box-shadow: rgba(0, 0, 0, 0.10) 0px 25px 20px -20px;
                 margin-bottom: 20px;
             }
 
@@ -65,7 +65,7 @@
                 left: 16px;
             }
 
-            .search button{
+            .search .button{
                 position: absolute;
                 top: 0px;
                 right: 0px;
@@ -74,7 +74,7 @@
                 background: #cc0000;
             }
 
-            .search button:hover {
+            .search .button:hover {
                 background: #cc0000;
             }
 
@@ -150,6 +150,19 @@
                 right: 10px;
                 top: 120px;
                 padding: 10px;
+            }
+
+            .filter-table ul {
+                list-style: none;
+            }
+
+            .filter-table a {
+                text-decoration: none;
+                color: #33353d;
+            }
+
+            .filter-table a:hover {
+                opacity: 0.6;
             }
 
             .slidecontainer {
@@ -350,41 +363,59 @@
                             <a class="dropdown-item" href="#">Nhà chung cư</a>
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" href="#">Disabled</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Liên hệ
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Nhà môi giới</a>
                     </li>
                 </ul>
 
                 <div class="nav-item">
+<<<<<<< HEAD
                     <a href="login.jsp" class="btn btn-light btn-md " role="button" aria-pressed="true">Đăng nhập</a>
+=======
+                    <a href="#" class="btn btn-light btn-md " role="button" aria-pressed="true">Đăng tin</a>
+                    <a href="#" class="btn btn-light btn-md " role="button" aria-pressed="true">Đăng nhập</a>
+>>>>>>> 63bd0b2f7679a124e13a5674a589c44167bef3dc
                     <a href="#" class="btn btn-light btn-md " role="button" aria-pressed="true">Đăng ký</a>
                 </div>
             </div>
         </nav>
 
         <div class="container">
-            <form action="">
+            <form action="HomePage" method="post">
                 <div class="row height d-flex justify-content-center align-items-center" style="margin-bottom: 10px; ">
-                    <div class="col-md-8">
+                    <div class="col-md-10">
                         <div class="search">
                             <i class="fa fa-search"></i>
-                            <input type="text" class="form-control" placeholder="...">
-                            <button class="btn btn-primary" style="border: none;">Search</button>
+                            <input type="text" class="form-control" name="name" placeholder="Search name...">
+                            <input type="submit" value="Search" class="btn btn-danger button" style="border: none; top">
                         </div>
-                        <select name="house" id="house" class="properties-picker" style="margin-left: 22px;">
+                        <select name="category" id="category" class="properties-picker" style="margin-left: 22px;">
                             <option value="">Loại nhà</option>
-                            <option value="1">Nhà trọ, phòng trọ</option>
-                            <option value="2">Nhà chung cư</option>
+                            <c:forEach items="${categories}" var="c"> 
+                                <option value="${c.getId()}">${c.getName()}</option>
+                            </c:forEach>
                         </select>
-                        <select name="bedroom" id="bedroom" class="properties-picker">
-                            <option value="">Phòng ngủ</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
+                        <select name="province" id="province" class="properties-picker">
+                            <option value="0">Tỉnh/Thành phố</option>
+                            <c:forEach items="${provinces}" var="p"> 
+                                <option value="${p.getId()}">${p.getName()}</option>
+                            </c:forEach>
                         </select>
-                        <select name="wc" id="wc" class="properties-picker">
-                            <option value="">Phòng vệ sinh</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
+                        <select name="district" id="district" class="properties-picker">
+                            <option value="0">Quận/Huyện</option>
+                            <c:forEach items="${districts}" var="d"> 
+                                <option value="${d.getId()}">${d.getName()}</option>
+                            </c:forEach>
+                        </select>
+                        <select name="commune" id="commune" class="properties-picker">
+                            <option value="0">Xã/Phường</option>
+                            <c:forEach items="${communes}" var="c"> 
+                                <option value="${c.getId()}">${c.getName()}</option>
+                            </c:forEach>
                         </select>
                         <button type="button" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #ffffff; padding: 3px; border: 1px solid black; border-radius: 5px; margin-right: 10px;">
                             Chọn diện tích
@@ -430,23 +461,37 @@
                                     </div>
                                     <div style="display: flex;">
                                         <div style="padding-right: 25px; color: #cc0000;"><b>${h.getAcreage()} m<sup>2</sup></b></div>
-                                        <div style="padding-left: 50px; color: #cc0000;"><b>${price}/tháng</b></div>
+                                        <div style="padding-left: 50px; color: #cc0000;"><b>${currencyFormat.format(h.getPrice())}/tháng</b></div>
                                     </div>
                                     <div style="display: flex;">
                                         <div style="padding-right: 25px;">${h.getBedroom()} <i class="fa-solid fa-bed"></i></div>
                                         <div style="padding-left: 60px;">${h.getBathroom()} <i class="fa-solid fa-toilet"></i></div>
                                     </div>
                                     <div style="display: flex;">
-                                        <div style=" width: 100%; font-size: smaller;"><i class="fa-solid fa-location-dot"></i> ${commune.getName()}, ${district.getName()}, ${province.getName()}</div>
+                                        <div style=" width: 100%; font-size: smaller;"><i class="fa-solid fa-location-dot"></i> 
+                                            <c:forEach items="${communes}" var="c">
+                                                <c:if test="${h.getCommuneId() == c.getId()}">${c.getName()}, </c:if>
+                                            </c:forEach>
+                                            <c:forEach items="${districts}" var="d">
+                                                <c:if test="${h.getDistrictId() == d.getId()}">${d.getName()}, </c:if>
+                                            </c:forEach>
+                                            <c:forEach items="${provinces}" var="p"> 
+                                                <c:if test="${h.getProvinceId() == p.getId()}">${p.getName()}</c:if>
+                                            </c:forEach> 
+                                        </div>
                                     </div>
                                     <div class="description">
                                         ${h.getDescription()}
                                     </div>
                                     <div class="user-image">
                                         <div> 
-                                            <img src="https://nld.mediacdn.vn/2021/2/25/6-chot-1-1614262018082368411354.jpg" width="50px;" height="50px;"> 
-                                            <span>${user.getFullname()}</span> 
-                                            <span class="phone"><i class="fa-solid fa-phone-volume"></i> <b>${user.getPhone()}</b></span>
+                                            <c:forEach items="${users}" var="u"> 
+                                                <c:if test="${h.getUserId() == u.getId()}">
+                                                    <img src="https://nld.mediacdn.vn/2021/2/25/6-chot-1-1614262018082368411354.jpg" width="50px;" height="50px;"> 
+                                                    <span>${u.getFullname()}</span> 
+                                                    <span class="phone"><i class="fa-solid fa-phone-volume"></i> <b>${u.getPhone()}</b></span>
+                                                </c:if>
+                                            </c:forEach>
                                         </div>
                                     </div>
                                 </div>
@@ -457,7 +502,7 @@
                 </c:choose>
             </div>
 
-            <div class="filter-table">
+            <div class="filter-table" hidden="">
                 <form action="">
                     <b>Lọc theo bảng giá</b>
                     <div style="padding-bottom: 5px; ">
@@ -475,6 +520,24 @@
                     </div>
                     <button type="submit" class="filter-button" style="border: none; border-radius: 5px; padding: 5px 10px;"><i class="fa-solid fa-filter"></i> Lọc</button>
                 </form>
+            </div>
+            <div class="filter-table">
+                <ul>
+                    <b>Lọc theo bảng giá</b>
+                    <li><a href="#">Dưới 1 triệu</a></li>
+                    <li><a href="#">1 - 3 triệu</a></li>
+                    <li><a href="#">3 - 5 triệu</a></li>
+                    <li><a href="#">5 - 10 triệu</a></li>
+                </ul>
+            </div>
+            <div class="filter-table" style="top: 300px;">
+                <ul>
+                    <b>Lọc theo diện tích</b>
+                    <li><a href="#">Dưới 15 m<sup>2</sup></a></li>
+                    <li><a href="#">15 m<sup>2</sup> - 20 m<sup>2</sup></a></li>
+                    <li><a href="#">20 m<sup>2</sup> - 25 m<sup>2</sup></a></li>
+                    <li><a href="#">25 m<sup>2</sup> - 30 m<sup>2</sup></a></li>
+                </ul>
             </div>
             <nav aria-label="Page navigation example" style="display: flex; justify-content: center; margin-top: 26px; ">
                 <ul class="pagination">
@@ -496,7 +559,7 @@
                     </li>
                     <c:forEach begin="1" end="${endPage}" var="i">
                         <li class="page-item"><a class="page-link" href="HomePage?page=${i}">${i}</a></li>
-                    </c:forEach>
+                        </c:forEach>
                     <li class="page-item">
                         <c:choose>
                             <c:when test="${indexPage < endPage}">

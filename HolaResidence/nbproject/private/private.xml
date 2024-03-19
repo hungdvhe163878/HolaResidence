@@ -3,14 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/FPT%20SHOP/OneDrive/Documents/NetBeansProjects/HolaResidence/src/java/Controller/HomeDetailsController.java</file>
-            <file>file:/C:/Users/FPT%20SHOP/OneDrive/Documents/NetBeansProjects/HolaResidence/web/HomeDetails.jsp</file>
-            <file>file:/C:/Users/FPT%20SHOP/OneDrive/Documents/NetBeansProjects/HolaResidence/src/java/Controller/HomePageController.java</file>
-            <file>file:/C:/Users/FPT%20SHOP/OneDrive/Documents/NetBeansProjects/HolaResidence/src/java/Model/RentHouse.java</file>
-            <file>file:/C:/Users/FPT%20SHOP/OneDrive/Documents/NetBeansProjects/HolaResidence/web/Homepage.jsp</file>
-            <file>file:/C:/Users/FPT%20SHOP/OneDrive/Documents/NetBeansProjects/HolaResidence/src/java/Model/User.java</file>
-            <file>file:/C:/Users/FPT%20SHOP/OneDrive/Documents/NetBeansProjects/HolaResidence/src/java/DAO/UserDAO.java</file>
-            <file>file:/C:/Users/FPT%20SHOP/OneDrive/Documents/NetBeansProjects/HolaResidence/src/java/DAO/RentHouseDAO.java</file>
+            <file>file:/C:/Users/FPT%20SHOP/OneDrive/Máy%20tính/HolaResidence/HolaResidence/src/java/Controller/HomePageController.java</file>
+            <file>file:/C:/Users/FPT%20SHOP/OneDrive/Máy%20tính/HolaResidence/HolaResidence/src/java/DAO/AddressDAO.java</file>
+            <file>file:/C:/Users/FPT%20SHOP/OneDrive/Máy%20tính/HolaResidence/HolaResidence/src/java/DAO/RentHouseDAO.java</file>
+            <file>file:/C:/Users/FPT%20SHOP/OneDrive/Máy%20tính/HolaResidence/HolaResidence/src/java/Model/RentHouse.java</file>
+            <file>file:/C:/Users/FPT%20SHOP/OneDrive/Máy%20tính/HolaResidence/HolaResidence/src/java/DAO/CategoryDAO.java</file>
+            <file>file:/C:/Users/FPT%20SHOP/OneDrive/Máy%20tính/HolaResidence/HolaResidence/src/java/Model/User.java</file>
+            <file>file:/C:/Users/FPT%20SHOP/OneDrive/Máy%20tính/HolaResidence/HolaResidence/web/Homepage.jsp</file>
+            <file>file:/C:/Users/FPT%20SHOP/OneDrive/Máy%20tính/HolaResidence/HolaResidence/src/java/DAO/UserDAO.java</file>
         </group>
     </open-files>
 </project-private>
