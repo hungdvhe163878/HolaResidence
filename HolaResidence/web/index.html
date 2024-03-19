@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #edecec;
+            }
+            .container {
+                margin-top: 10px;
+                box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+                border-radius: 5px;
+                background-color: #ffffff;
+                padding: 10px;
+                height: auto;
+                position: relative;
+            }
+
+            .height{
+                height: 100px;
+            }
+
+            .search{
+                position: relative;
+                box-shadow: 0 0 40px rgba(51, 51, 51, .1);
+
+            }
+
+            .search input{
+                height: 50px;
+                text-indent: 25px;
+                border: 2px solid #d6d4d4;
+            }
+
+            .search input:focus{
+                box-shadow: none;
+                border: 2px solid blue;
+            }
+
+            .search .fa-search{
+                position: absolute;
+                top: 20px;
+                left: 16px;
+            }
+
+            .search button{
+                position: absolute;
+                top: 0px;
+                right: 0px;
+                height: 50px;
+                width: 110px;
+                background: blue;
+            }
+
+            .properties-picker {
+                margin-top: 5px;
+                margin-right: 10px;
+                padding: 5px 8px;
+            }
+
+            .container-content {
+                width: 60%;
+                height: auto;
+                display: flex;
+                padding: 12px;
+                color: black;
+                border: 1px solid #edecec;
+                border-radius: 5px;
+                color: black;
+            }
+
+            .image {
+                width: 500px;
+                height: auto;
+                flex: 1;
+                margin: 39px 10px 0;
+            }
+
+            .house-properties {
+                flex: 2;
+            }
+
+            .description {
+                height: 150px;
+                overflow-y: hidden;
+            }
+
+            .user-image {
+                margin-top: 20px;
+            }
+
+            .user-image img {
+                border-radius: 50%;
+            }
+
+            .phone {
+                background-color: #cc0000;
+                padding: 10px 15px;
+                border-radius: 5px;
+                color: white;
+                margin-left: 35px;
+            }
+
+            #content:hover {
+                color: black;
+                box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+                border-radius: 5px;
+
+                .description {
+                    overflow-y: scroll;
+                    text-overflow: clip;
+                }
+            }
+
+            .filter-table {
+                position: absolute;
+                width: 380px;
+                border: 1px solid #edecec;
+                border-radius: 5px;
+                right: 10px;
+                top: 120px;
+                padding: 10px;
+            }
+
+            .filter-button:hover {
+                cursor: pointer;
+            }
+
+            .footer {
+                margin-top: 10px;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                padding: 50px;
+                background-color: #ffffff;
+                color: #d6d4d4;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">Hola Residence</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>x
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Nhà cho thuê
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">Nhà trọ, phòng trọ</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Nhà chung cư</a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="#">Disabled</a>
+                    </li>
+                </ul>
+
+                <div class="nav-item">
+                    <a href="#" class="btn btn-light btn-md " role="button" aria-pressed="true">Đăng nhập</a>
+                    <a href="#" class="btn btn-light btn-md " role="button" aria-pressed="true">Đăng ký</a>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container">
+            <form action="">
+                <div class="row height d-flex justify-content-center align-items-center" style="margin-bottom: 10px; ">
+                    <div class="col-md-8">
+                        <div class="search">
+                            <i class="fa fa-search"></i>
+                            <input type="text" class="form-control" placeholder="...">
+                            <button class="btn btn-primary">Search</button>
+                        </div>
+                        <select name="house" id="house" class="properties-picker" style="margin-left: 22px;">
+                            <option value="">Loại nhà</option>
+                            <option value="1">Nhà trọ, phòng trọ</option>
+                            <option value="2">Nhà chung cư</option>
+                        </select>
+                        <select name="acreage" id="acreage" class="properties-picker">
+                            <option value="">Diện tích</option>
+                            <option value="1">10</option>
+                            <option value="2">100</option>
+                        </select>
+                        <select name="bedroom" id="bedroom" class="properties-picker">
+                            <option value="">Phòng ngủ</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </select>
+                        <select name="wc" id="wc" class="properties-picker">
+                            <option value="">Phòng vệ sinh</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </select>
+                        <button type="button" id="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="background-color: #ffffff; padding: 3px; border: 1px solid black;">
+                            Chọn mức giá
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <div style="padding: 10px;">
+                                <input type="number" placeholder="Giá thấp nhất" name="search" style="margin-bottom: 5px;" min="0"><br>
+                                <input type="number" placeholder="Giá cao nhất" name="search">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div style="width: 1200px;">
+                <a class="container-content" id="content" href="#" style="text-decoration: none; color: black;">
+                    <div class="image">
+                        <img src="https://nld.mediacdn.vn/2021/2/25/6-chot-1-1614262018082368411354.jpg" alt="Property Image" width="350px;" height="auto;">
+                    </div>
+                    <div class="house-properties">
+                        <div style="display: flex;">
+                            <div style="padding-right: 165px;"><b>Tên Trọ</b></div>
+                        </div>
+                        <div style="display: flex;">
+                            <div style="padding-right: 25px; color: #cc0000;"><b>Diện tích</b></div>
+                            <div style="padding-right: 25px; color: #cc0000;"><b>Giá/Tháng</b></div>
+                            <div style="padding-right: 25px;">1 <i class="fa-solid fa-bed"></i></div>
+                            <div style="padding-right: 25px;">1 <i class="fa-solid fa-toilet"></i></div>
+                        </div>
+                        <div class="description">
+                            Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, 
+                            id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.
+                        </div>
+                        <div class="user-image">
+                            <div> 
+                                <img src="https://nld.mediacdn.vn/2021/2/25/6-chot-1-1614262018082368411354.jpg" width="50px;" height="50px;"> 
+                                <span>User Name</span> 
+                                <span class="phone"><i class="fa-solid fa-phone-volume"></i> <b>0123456789</b></span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <p style="border-bottom: 1px solid #edecec; margin-top: 16px; width: 720px"></p>
+                <a class="container-content" id="content" href="#" style="text-decoration: none; color: black;">
+                    <div class="image">
+                        <img src="https://nld.mediacdn.vn/2021/2/25/6-chot-1-1614262018082368411354.jpg" alt="Property Image" width="350px;" height="auto;">
+                    </div>
+                    <div class="house-properties">
+                        <div style="display: flex;">
+                            <div style="padding-right: 165px;"><b>Tên Trọ</b></div>
+                        </div>
+                        <div style="display: flex;">
+                            <div style="padding-right: 25px; color: #cc0000;"><b>Diện tích</b></div>
+                            <div style="padding-right: 25px; color: #cc0000;"><b>Giá/Tháng</b></div>
+                            <div style="padding-right: 25px;">1 <i class="fa-solid fa-bed"></i></div>
+                            <div style="padding-right: 25px;">1 <i class="fa-solid fa-toilet"></i></div>
+                        </div>
+                        <div class="description">
+                            Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, 
+                            id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.
+                        </div>
+                        <div class="user-image">
+                            <div> 
+                                <img src="https://nld.mediacdn.vn/2021/2/25/6-chot-1-1614262018082368411354.jpg" width="50px;" height="50px;"> 
+                                <span>User Name</span> 
+                                <span class="phone"><i class="fa-solid fa-phone-volume"></i> <b>0123456789</b></span>
+                            </div>
+                        </div>
+                    </div>
+                </a>        
+            </div>
+
+            <div class="filter-table">
+                <form action="">
+                    <b>Lọc theo bảng giá</b>
+                    <div style="padding-bottom: 5px; ">
+                        <input type="number" placeholder="Giá đầu..." name="search" style="margin-bottom: 5px;" min="0">
+                        <input type="number" placeholder="Giá cuối..." name="search">
+                    </div>
+                    <b>Lọc diện tích</b>
+                    <div style="padding-bottom: 5px; ">
+                        <input type="number" placeholder="..." name="search" style="margin-bottom: 5px;" min="0">
+                        <input type="number" placeholder="..." name="search">
+                    </div>
+                    <button type="submit" class="filter-button" style="border: none; border-radius: 5px; padding: 5px 10px;"><i class="fa-solid fa-filter"></i> Lọc</button>
+                </form>
+            </div>
+            <nav aria-label="Page navigation example" style="display: flex; justify-content: center; margin-top: 26px;">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                    </li>
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="footer">
+            <p>Footer</p>
+        </div>
+    </body>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/dd477f91f1.js" crossorigin="anonymous"></script>
+</html>
