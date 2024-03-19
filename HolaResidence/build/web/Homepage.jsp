@@ -396,19 +396,19 @@
                             </c:forEach>
                         </select>
                         <select name="province" id="province" class="properties-picker">
-                            <option value="">Tỉnh/Thành phố</option>
+                            <option value="0">Tỉnh/Thành phố</option>
                             <c:forEach items="${provinces}" var="p"> 
                                 <option value="${p.getId()}">${p.getName()}</option>
                             </c:forEach>
                         </select>
                         <select name="district" id="district" class="properties-picker">
-                            <option value="">Quận/Huyện</option>
+                            <option value="0">Quận/Huyện</option>
                             <c:forEach items="${districts}" var="d"> 
                                 <option value="${d.getId()}">${d.getName()}</option>
                             </c:forEach>
                         </select>
                         <select name="commune" id="commune" class="properties-picker">
-                            <option value="">Xã/Phường</option>
+                            <option value="0">Xã/Phường</option>
                             <c:forEach items="${communes}" var="c"> 
                                 <option value="${c.getId()}">${c.getName()}</option>
                             </c:forEach>
@@ -457,7 +457,7 @@
                                     </div>
                                     <div style="display: flex;">
                                         <div style="padding-right: 25px; color: #cc0000;"><b>${h.getAcreage()} m<sup>2</sup></b></div>
-                                        <div style="padding-left: 50px; color: #cc0000;"><b>${h.getPrice()}/tháng</b></div>
+                                        <div style="padding-left: 50px; color: #cc0000;"><b>${currencyFormat.format(h.getPrice())}/tháng</b></div>
                                     </div>
                                     <div style="display: flex;">
                                         <div style="padding-right: 25px;">${h.getBedroom()} <i class="fa-solid fa-bed"></i></div>
@@ -466,7 +466,13 @@
                                     <div style="display: flex;">
                                         <div style=" width: 100%; font-size: smaller;"><i class="fa-solid fa-location-dot"></i> 
                                             <c:forEach items="${communes}" var="c">
-                                                <c:if test="${h.getCommuneId() == c.getId()}">${c.getName()},${district.getName()}, ${province.getName()}</c:if>
+                                                <c:if test="${h.getCommuneId() == c.getId()}">${c.getName()}, </c:if>
+                                            </c:forEach>
+                                            <c:forEach items="${districts}" var="d">
+                                                <c:if test="${h.getDistrictId() == d.getId()}">${d.getName()}, </c:if>
+                                            </c:forEach>
+                                            <c:forEach items="${provinces}" var="p"> 
+                                                <c:if test="${h.getProvinceId() == p.getId()}">${p.getName()}</c:if>
                                             </c:forEach> 
                                         </div>
                                     </div>
@@ -475,9 +481,13 @@
                                     </div>
                                     <div class="user-image">
                                         <div> 
-                                            <img src="https://nld.mediacdn.vn/2021/2/25/6-chot-1-1614262018082368411354.jpg" width="50px;" height="50px;"> 
-                                            <span>${user.getFullname()}</span> 
-                                            <span class="phone"><i class="fa-solid fa-phone-volume"></i> <b>${user.getPhone()}</b></span>
+                                            <c:forEach items="${users}" var="u"> 
+                                                <c:if test="${h.getUserId() == u.getId()}">
+                                                    <img src="https://nld.mediacdn.vn/2021/2/25/6-chot-1-1614262018082368411354.jpg" width="50px;" height="50px;"> 
+                                                    <span>${u.getFullname()}</span> 
+                                                    <span class="phone"><i class="fa-solid fa-phone-volume"></i> <b>${u.getPhone()}</b></span>
+                                                </c:if>
+                                            </c:forEach>
                                         </div>
                                     </div>
                                 </div>

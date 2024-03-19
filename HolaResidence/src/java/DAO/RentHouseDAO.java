@@ -113,42 +113,42 @@ public class RentHouseDAO extends DBContext {
     List<Object> params = new ArrayList<>();
 
     if (!name.isEmpty()) {
-        sql.append(" AND name LIKE ?");
-        params.add("%" + name + "%");
+        sql.append(" AND name LIKE '%").append(name).append("%'");
+        //params.add("%" + name + "%");
     }
     if (!category_id.isEmpty()) {
-        sql.append(" AND category_id = ?");
-        params.add(category_id);
+        sql.append(" AND category_id = ").append(category_id);
+        //params.add(category_id);
     }
     if (province_id > 0) {
-        sql.append(" AND province_id = ?");
-        params.add(province_id);
+        sql.append(" AND province_id = ").append(province_id);
+        //params.add(province_id);
     }
     if (district_id > 0) {
-        sql.append(" AND district_id = ?");
-        params.add(district_id);
+        sql.append(" AND district_id = ").append(district_id);
+        //params.add(district_id);
     }
     if (commune_id > 0) {
-        sql.append(" AND commune_id = ?");
-        params.add(commune_id);
+        sql.append(" AND commune_id = ").append(commune_id);
+//        params.add(commune_id);
     }
     if (!minAcreage.isEmpty() && !maxAcreage.isEmpty()) {
-        sql.append(" AND acreage BETWEEN ? AND ?");
-        params.add(Double.parseDouble(minAcreage));
-        params.add(Double.parseDouble(maxAcreage));
+        sql.append(" AND acreage BETWEEN ").append(minAcreage).append(" AND ").append(maxAcreage);
+//        params.add(Double.parseDouble(minAcreage));
+//        params.add(Double.parseDouble(maxAcreage));
     }
     if (!minPrice.isEmpty() && !maxPrice.isEmpty()) {
-        sql.append(" AND price BETWEEN ? AND ?");
-        params.add(Double.parseDouble(minPrice));
-        params.add(Double.parseDouble(maxPrice));
+        sql.append(" AND price BETWEEN ").append(minPrice).append(" AND ").append(maxPrice);
+//        params.add(Double.parseDouble(minPrice));
+//        params.add(Double.parseDouble(maxPrice));
     }
 
     try {
         PreparedStatement statement = connection.prepareStatement(sql.toString());
-        int index = 1;
-        for (Object param : params) {
-            statement.setObject(index++, param);
-        }
+//        int index = 1;
+//        for (Object param : params) {
+//            statement.setObject(index++, param);
+//        }
         ResultSet rs = statement.executeQuery();
         while (rs.next()) {
             RentHouse rentHouse = new RentHouse();
@@ -180,7 +180,7 @@ public class RentHouseDAO extends DBContext {
     public static void main(String[] args) {
 
         RentHouseDAO dao = new RentHouseDAO();
-        List<RentHouse> p = dao.sortedHouseList("", "", 0, 3, 0, "", "", "", "");
+        List<RentHouse> p = dao.sortedHouseList("House 2", "", 0, 0, 0, "", "", "", "");
         for (RentHouse i : p) {
             System.out.println(i.toString());
         }
